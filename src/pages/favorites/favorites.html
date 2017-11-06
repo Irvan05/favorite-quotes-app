@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start >
+      <button ion-button menuToggle>
+        <ion-icon name="menu" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="onNewQuote()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Favorites</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <button block ion-button small (click)="onAddQuote()">
+    <ion-icon name="add" style="font-size: 200%; font-weight: bold; color: white;"></ion-icon>
+  </button> -->
+  <ion-list>
+    <ion-item-sliding *ngFor='let quote of quotes'>
+      <ion-item (click)="getQuoteDetail(quote)" [color]="setBgColor()">
+        <h2>{{ quote.text }}</h2>
+        <p> {{ quote.person }}</p>
+      </ion-item>
+      <ion-item-options>
+        <button (click)="unfavoriteQuote(quote)" ion-button color="danger"><ion-icon name="trash"></ion-icon>Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+

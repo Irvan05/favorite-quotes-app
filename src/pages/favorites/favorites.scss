@@ -1,0 +1,10 @@
+page-favorites {
+    .author {
+        text-align: right;
+        color: #ccc;
+        text-transform: uppercase;
+        &:before {
+            content: '- ';
+        }
+    }
+}
