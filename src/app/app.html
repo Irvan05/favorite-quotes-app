@@ -14,8 +14,20 @@
                 <ion-icon name="settings" item-left></ion-icon>
                 Settings
             </button>
+            <button ion-item (click)="onLoad(signInPage)" *ngIf="signin == false">
+                <ion-icon name="log-in" item-left></ion-icon>
+                Sign In
+            </button>
+            <button ion-item (click)="onLoad(signUpPage)" *ngIf="signin == false">
+                <ion-icon name="person-add" item-left></ion-icon>
+                Sign Up
+            </button>
+            <button ion-item (click)="logout()" *ngIf="signin == true">
+                <ion-icon name="log-out" item-left></ion-icon>
+                Log Out
+            </button>
         </ion-list>
     </ion-content>
 </ion-menu>
 
-<ion-nav [root]="tabsPage" #sideMenuContent></ion-nav>
+<ion-nav [root]="signInPage" #sideMenuContent></ion-nav>

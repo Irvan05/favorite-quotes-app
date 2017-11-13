@@ -1,3 +1,5 @@
+import { SignInPage } from './../pages/sign-in/sign-in';
+import { SignUpPage } from './../pages/sign-up/sign-up';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -14,6 +16,7 @@ import { SettingsPage } from '../pages/settings/settings';
 
 import { QuotesService } from '../services/quotes';
 import { SettingsService } from '../services/settings';
+import { AuthService } from '../services/authService'; 
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { SettingsService } from '../services/settings';
     FavoritesPage,
     QuotesPage,
     QuotePage,
-    SettingsPage
+    SettingsPage,
+    SignInPage,
+    SignUpPage
   ],
   imports: [
     BrowserModule,
@@ -37,14 +42,17 @@ import { SettingsService } from '../services/settings';
     FavoritesPage,
     QuotesPage,
     QuotePage,
-    SettingsPage
+    SettingsPage,
+    SignInPage,
+    SignUpPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QuotesService,
-    SettingsService
+    SettingsService,
+    AuthService
   ]
 })
 export class AppModule {}

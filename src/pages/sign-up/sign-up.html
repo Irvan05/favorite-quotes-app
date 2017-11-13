@@ -1,0 +1,35 @@
+<!--
+  Generated template for the SignUpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons> 
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="signUp(form)">
+      <ion-list>
+          <ion-item>
+              <ion-label fixed>Email : </ion-label>
+              <ion-input type="email" name="email" required placeholder="Email Address" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label fixed>Password : </ion-label>
+              <ion-input type="password" name="password" required placeholder="Password" ngModel></ion-input>
+          </ion-item>
+      </ion-list>
+      <button ion-button type="submit" block >Sign Up </button>
+  </form>
+</ion-content>
