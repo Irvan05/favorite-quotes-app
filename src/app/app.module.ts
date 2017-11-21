@@ -1,3 +1,4 @@
+import { PopoverPage } from './../pages/popover/popover';
 import { SignInPage } from './../pages/sign-in/sign-in';
 import { SignUpPage } from './../pages/sign-up/sign-up';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +19,7 @@ import { QuotesService } from '../services/quotes';
 import { SettingsService } from '../services/settings';
 import { AuthService } from '../services/authService'; 
 
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
@@ -28,10 +30,12 @@ import { AuthService } from '../services/authService';
     QuotePage,
     SettingsPage,
     SignInPage,
-    SignUpPage
+    SignUpPage,
+    PopoverPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -44,7 +48,8 @@ import { AuthService } from '../services/authService';
     QuotePage,
     SettingsPage,
     SignInPage,
-    SignUpPage
+    SignUpPage,
+    PopoverPage
   ],
   providers: [
     StatusBar,

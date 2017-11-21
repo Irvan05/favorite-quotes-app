@@ -1,9 +1,11 @@
+import { PopoverPage } from './../popover/popover';
 import { Component } from '@angular/core';
 import { QuotesService } from '../../services/quotes';
 import { Quote } from '../../data/quote.interface';
-import { ModalController, AlertController, ToastController } from 'ionic-angular';
+import { ModalController, AlertController, ToastController, PopoverController, ViewController } from 'ionic-angular';
 import { QuotePage } from '../quote/quote';
 import { SettingsService } from '../../services/settings';
+import { AuthService } from '../../services/authService';
 
 @Component({
   selector: 'page-favorites',
@@ -17,7 +19,10 @@ export class FavoritesPage {
     private modalCtrl: ModalController,
     private settingsSvc: SettingsService,
     private toastCtrl: ToastController,
-    private alertCtrl: AlertController) {}
+    private alertCtrl: AlertController,
+    private popoverCtrl:PopoverController,
+    private viewCtrl: ViewController,
+    public authService:AuthService) {}
 
   ionViewWillEnter() {
     this.quotes = this.quoteService.getFavoriteQuotes();
@@ -95,4 +100,29 @@ export class FavoritesPage {
     })
     alert.present();
   }
+
+  presentPopover(myEvent){
+    let popover = this.popoverCtrl.create(PopoverPage);
+      popover.present({
+      ev: myEvent
+    });
+  }
+
+  data(){
+    console.log("panggil data");
+    this.authService.getActiveUser().getToken().then(
+      (token: string) => {
+        this.quoteService.storeList(token).subscribe(
+          () => {
+            console.log('berhasil');
+          },
+          error => {
+            console.log('gagal');
+          }
+        )
+      }
+    );
+  }
+
+
 }
